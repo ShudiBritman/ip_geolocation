@@ -5,9 +5,8 @@ metadata:
   labels: 
     db: redis 
 spec: 
-  selector: 
-    matchLabels: 
-      db: redis
+  selector:  
+    db: redis
   ports: 
   - port: 6379
     targetPort: 6379
