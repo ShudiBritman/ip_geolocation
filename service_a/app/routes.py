@@ -5,9 +5,13 @@ router = APIRouter()
 
 @router.post('/ip/{ip}')
 def post_ip(ip: str):
-    coordinates = get_coordinates_by_ip(ip)
-    data = {ip: coordinates}
-    save_ip_and_coordinates(data)
+    try:
+        coordinates = get_coordinates_by_ip(ip)
+        data = {ip: coordinates}
+        response = save_ip_and_coordinates(data)
+        return response
+    except Exception as e: 
+        return {"message": str(e)}
 
 
 @router.get('/')
