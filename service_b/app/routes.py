@@ -17,4 +17,8 @@ def add_new_item(data: dict):
     if not is_valid:
         raise HTTPException(status_code=404, detail="Unprocessable Entity")
     else:
-        return {"message": "ip added successfully"}
+        result = add_item(data)
+        if result == "updated":
+            return {"message": "ip updated successfully"}
+        else:
+            return {"message": "ip added successfully"}
