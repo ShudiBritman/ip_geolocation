@@ -1,13 +1,18 @@
 apiVersion: v1 
 kind: Pod
 metadata: 
-  name: service_a
+  name: api_a
   labels: 
-    app: service_a
+    app: api_a
 spec: 
   containers: 
-  - name: service_a 
+  - name: api_a 
     image: israelerlan1/service_a
     imagePullPolicy: Always
     ports:
       containerPort: 8000 
+    env: 
+    - name: HOST_SERVER_B
+      value: "api-b-svc"
+    - name: PORT_SERVER_B
+      value: "8080"
