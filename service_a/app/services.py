@@ -9,6 +9,8 @@ def get_coordinates_by_ip(ip: str) -> dict:
         data = response.json()
         coordinates = {'lat': data['lat'],'lon': data['lon']}
         return coordinates
+    except HTTPException: 
+        raise
     except Exception: 
         raise HTTPException(status_code=500, detail="An error from ip-api.com")
 

@@ -4,7 +4,7 @@ from fastapi import HTTPException
 
 DB_CONFIG = {
     "host": os.getenv("REDIS_HOST", "localhost"),
-    "port": os.getenv("REDIS_PORT", "6379"),
+    "port": int(os.getenv("REDIS_PORT", "6379")),
             }
 
 

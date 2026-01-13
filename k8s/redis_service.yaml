@@ -1,0 +1,13 @@
+apiVersion: apps/v1 
+kind: Service 
+metadata: 
+  name: redis-svc 
+  labels: 
+    db: redis 
+spec: 
+  selector: 
+    matchLabels: 
+      db: redis
+  ports: 
+    port: 6379
+    targetPort: 6379
