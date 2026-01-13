@@ -1,23 +1,23 @@
 from fastapi import APIRouter, HTTPException
-from storage import get_all, add_item
-from schemas import is_valid_coordinates
+from . import storage
+from . import schemas
 
 router = APIRouter()
 
 
 @router.get("/ip")
 def get_all_ip():
-    result = get_all()
+    result = storage.get_all()
     return result
 
 
 @router.post("/ip")
 def add_new_item(data: dict):
-    is_valid = is_valid_coordinates(data)
+    is_valid = schemas.is_valid_coordinates(data)
     if not is_valid:
         raise HTTPException(status_code=404, detail="Unprocessable Entity")
     else:
-        result = add_item(data)
+        result = storage.add_item(data)
         if result == "updated":
             return {"message": "ip updated successfully"}
         else:
