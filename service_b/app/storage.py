@@ -1,5 +1,6 @@
 import redis
 import os
+from fastapi import HTTPException
 
 DB_CONFIG = {
     "host": os.getenv("REDIS_HOST", "localhost"),
@@ -8,8 +9,11 @@ DB_CONFIG = {
 
 
 def get_connection():
-    r = redis.Redis(**DB_CONFIG, decode_responses=True)
-    return r
+    try:
+        r = redis.Redis(**DB_CONFIG, decode_responses=True)
+        return r
+    except redis.RedisError:
+        raise HTTPException(status_code=500, detail="Redis connection failed")
 
 
 def add_item(data: dict):
