@@ -10,7 +10,7 @@ spec:
     image: israelerlan1/service_a
     imagePullPolicy: Always
     ports:
-      containerPort: 8000 
+    - containerPort: 8000 
     env: 
     - name: HOST_SERVER_B
       value: "api-b-svc"
