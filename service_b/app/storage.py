@@ -19,3 +19,11 @@ def add_item(data: dict):
     r.hset(f"ip:{ip}", mapping=coords)
     r.close()
 
+
+def get_all():
+    r = get_connection()
+    keys = r.scan(match="*")[1]
+    result = {}
+    for key in keys:
+        result[key] = r.hgetall(key)
+    return result
