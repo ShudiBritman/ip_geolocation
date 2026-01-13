@@ -1,4 +1,12 @@
 apiVersion: apps/v1 
 kind: Service 
 metadata: 
-  name: 
+  name: api-a-svc 
+  labels: 
+    app: api-a-svc
+spec: 
+  selector: 
+    app: api-a
+  ports: 
+  - port: 8000 
+    targetPort: 8000
