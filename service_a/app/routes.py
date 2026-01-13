@@ -5,10 +5,12 @@ router = APIRouter()
 
 @router.post('/ip/{ip}')
 def post_ip(ip: str):
-    data = get_coordinates_by_ip(ip)
+    coordinates = get_coordinates_by_ip(ip)
+    data = {ip: coordinates}
     save_ip_and_coordinates(data)
 
 
 @router.get('/')
 def test():
-    return test_server_b
+    response = test_server_b()
+    return response
