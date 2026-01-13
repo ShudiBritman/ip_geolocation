@@ -16,8 +16,11 @@ def add_item(data: dict):
     r = get_connection()
     ip = next(iter(data))
     coords = data[ip]
-    r.hset(f"ip:{ip}", mapping=coords)
+    added_fields = r.hset(f"ip:{ip}", mapping=coords)
     r.close()
+    if added_fields == 0:
+        return "updated"
+    return "created"
 
 
 def get_all():
