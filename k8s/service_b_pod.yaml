@@ -15,4 +15,4 @@ spec:
       - name: REDIS_HOST
         value: "redis-svc"
       - name: REDIS_PORT
-        value: "redis-svc"
+        value: "6379"
