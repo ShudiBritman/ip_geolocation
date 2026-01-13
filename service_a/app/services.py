@@ -4,7 +4,7 @@ import os
 
 
 def get_coordinates_by_ip(ip: str) -> dict: 
-    response = requests.get(f'http://ip-api.com/json/#{ip}') 
+    response = requests.get(f'http://ip-api.com/json/{ip}') 
     data = response.json()
     coordinates = {'lat': data['lat'],'lon': data['lon']}
     return coordinates
@@ -15,6 +15,7 @@ def save_ip_and_coordinates(data: dict):
     port = int(os.getenv('PORT_SERVER_B', 8080))
     try:
         response = requests.post(url=f'http://{host}:{port}/ip', json=data)
+        return response.json()
     except Exception as e: 
         return {"error": str(e)}
 
