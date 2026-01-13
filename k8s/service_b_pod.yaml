@@ -11,3 +11,8 @@ spec:
     imagePullPolicy: Always
     ports:
     - containerPort: 8080
+    env:
+      - name: REDIS_HOST
+        value: "redis-svc"
+      - name: REDIS_PORT
+        value: "redis-svc"
