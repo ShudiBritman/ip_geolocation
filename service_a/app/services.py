@@ -43,7 +43,3 @@ def get_all_data():
 
 
 
-def test_server_b():
-    base_url = get_server_b_base_url()
-    response = requests.get(url=base_url)
-    return response.json()
