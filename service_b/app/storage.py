@@ -5,4 +5,8 @@ DB_CONFIG = {
     "host": os.getenv("REDIS_HOST", "localhost"),
     "port": os.getenv("REDIS_PORT", "6379"),
             }
-r = redis.Redis(DB_CONFIG, decode_responses=True)
+
+
+def get_connection():
+    r = redis.Redis(**DB_CONFIG, decode_responses=True)
+    return r
