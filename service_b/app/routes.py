@@ -18,7 +18,4 @@ def add_new_item(data: dict):
         raise HTTPException(status_code=404, detail="Unprocessable Entity")
     else:
         result = storage.add_item(data)
-        if result == "updated":
-            return {"message": "ip updated successfully"}
-        else:
-            return {"message": "ip added successfully"}
+        return {"message": "ip added successfully", "coordinate": result}

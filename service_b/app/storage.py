@@ -22,9 +22,7 @@ def add_item(data: dict):
     coords = data[ip]
     added_fields = r.hset(ip, mapping=coords)
     r.close()
-    if added_fields == 0:
-        return "updated"
-    return "created"
+    return coords
 
 
 def get_all():
