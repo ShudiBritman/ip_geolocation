@@ -16,7 +16,7 @@ def save_ip_and_coordinates(data: dict):
     try:
         response = requests.post(url=f'http://{host}/ip:{port}', json=data)
     except Exception as e: 
-        return {"message": str(e)}
+        return {"error": str(e)}
 
 def get_all_data():
     host = os.getenv('HOST_SERVER_B', 'localhost')
@@ -25,7 +25,7 @@ def get_all_data():
         response = requests.get(url=f'http://{host}ip:{port}')
         return response.json()
     except Exception as e: 
-        return {"message": str(e)}
+        return {"error": str(e)}
 
 
 

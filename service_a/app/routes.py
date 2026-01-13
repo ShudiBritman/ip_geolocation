@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from services import get_coordinates_by_ip, save_ip_and_coordinates, test_server_b
+from services import get_coordinates_by_ip, save_ip_and_coordinates,get_all_data, test_server_b
 
 router = APIRouter()
 
@@ -12,6 +12,15 @@ def post_ip(ip: str):
         return response
     except Exception as e: 
         return {"message": str(e)}
+    
+
+@router.get('/ip')
+def get_data():
+    try: 
+        data = get_all_data()
+        return data
+    except Exception as e: 
+        return {"error": str(e)}
 
 
 @router.get('/')
