@@ -18,5 +18,5 @@ def is_valid_coordinates(data: dict):
     try:
         Coordintas.model_validate(coords)
         return True
-    except (ValueError, ValueError, StopIteration):
+    except (ValueError, TypeError, StopIteration):
         return False
