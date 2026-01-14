@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from storage import *
-from schemas import *
+from app.storage import *
+from app.schemas import *
 
 router = APIRouter()
 
