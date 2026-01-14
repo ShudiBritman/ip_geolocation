@@ -3,7 +3,7 @@ kind: StatefulSet
 metadata:
   name: redis
 spec:
-  serviceName: redis
+  serviceName: redis-svc
   replicas: 1
   selector:
     matchLabels:
@@ -23,12 +23,7 @@ spec:
         volumeMounts:
         - name: redis-data
           mountPath: /data
-  volumeClaimTemplates:
-  - metadata:
-      name: redis-data
-    spec:
-      accessModes: ["ReadWriteOnce"]
-      resources:
-        requests:
-          storage: 1Gi
-
+      volumes:
+      - name: redis-data
+        persistentVolumeClaim:
+          claimName: redis-data-redis-0
