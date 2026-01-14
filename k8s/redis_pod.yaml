@@ -13,8 +13,6 @@ spec:
       labels:
         app: redis
     spec:
-      securityContext:
-        fsGroup: 1001
       containers:
       - name: redis
         image: redis/redis-stack:latest
@@ -23,7 +21,13 @@ spec:
         volumeMounts:
         - name: redis-data
           mountPath: /data
-      volumes:
-      - name: redis-data
-        persistentVolumeClaim:
-          claimName: redis-data-redis-0
+  volumeClaimTemplates:
+  - metadata:
+      name: redis-data
+    spec:
+      storageClassName: gp3
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
